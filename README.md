@@ -1,14 +1,13 @@
 # COMP483_Pipeline_Project_2026
 
 ## Description
-This project uses Snakemake to automate a pipeline implementing tools introduced in COMP483 Computational Biology to analyze sequencing reads. The samples analyzed in this project are from two Human cytomegalovirus patients, 2 and 6 days post-infection, sequenced by Cheng et al. 2017. First, the pipeline extracts the coding sequence features and quantifies the TPM of the samples using kallisto. The quantified samples are fed into an R script using the sleuth package to find the differentially expressed genes between the 2 and 6 dpi samples. Next, only reads that map to the HCMV genome are identified using bowtie2, which are then used to create an assembly for each sample using SPAdes. Finally, the sample assemblies are aligned using blast+ to find the top 5 strains. The final results of this analysis of the HCMV samples are summarized in a file named PipelineReport.txt.
+This project uses Snakemake to automate a pipeline implementing tools introduced in COMP483 Computational Biology to analyze sequencing reads. The samples analyzed in this project are from two Human cytomegalovirus patients, 2 and 6 days post-infection, sequenced by Cheng et al. 2017. First, the pipeline extracts the coding sequence features and quantifies the TPM of the samples using kallisto. The quantified samples are fed into an R script using the sleuth package to find the differentially expressed genes between the 2 and 6 dpi samples. Next, only reads that map to the HCMV genome are identified using bowtie2, which are then used to create an assembly for each sample using SPAdes. Finally, the assembly contigs are aligned using blast+ to find the top 5 strains for each sample. The final results of this analysis of the HCMV samples are summarized in a file named PipelineReport.txt.
 
 ## Dependencies
 
 ### Bioinformatics Tools
 - NCBI datasets
 - kallisto
- -sleuth
 - bowtie2
 - spades
 - blast+
@@ -41,3 +40,9 @@ head -n 40000 data/SRR5660030_1.fastq > sample_data/SRR5660030_1.fastq
 ```
 
 ## Running the Pipeline
+Before running the pipeline, make sure all sample test data are saved in a folder named sample_data. Once the repo is cloned to your local system and all dependencies are installed, run the pipeline by simply calling Snakemake and the number of cores to use to run the pipeline. For example, to run the pipeline using 2 cores, type either of the following commands into your terminal:
+
+```
+snakemake --cores 2
+snakemake -c 2
+```
