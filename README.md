@@ -7,21 +7,17 @@ This project uses Snakemake to automate a pipeline implementing tools introduced
 
 ### Bioinformatics Tools
 - NCBI datasets
-- kallisto
-- bowtie2
-- spades
-- blast+
+- [kallisto]([https://pachterlab.github.io/kallisto/](https://pachterlab.github.io/kallisto/download))
+- [bowtie2](https://github.com/BenLangmead/bowtie2)
+- [spades](https://github.com/ablab/spades)
+- [BLAST+](https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html#downloadblastdata)
 
 ### Python Modules
-- os
-- csv
-- gzip
-- Bio.Seq
-- Bio.SeqIO
+- [Biopython (Bio.Seq and Bio.SeqIO)](https://biopython.org/)
 
 ### R Libraries
-- sleuth
-- dplyr
+- [sleuth](https://pachterlab.github.io/sleuth/download)
+- [dplyr](https://dplyr.tidyverse.org/index.html)
 
 ## Data
 The sample data were retrieved from NCBI under the accession numbers SRR5660030, SRR5660033, SRR5660044, and SRR5660045. The SRA location address links were saved to a txt file hcmv_samples.txt. The samples were downloaded to the local system using the following commands:
