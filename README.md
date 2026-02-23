@@ -6,8 +6,8 @@ This project uses Snakemake to automate a pipeline implementing tools introduced
 ## Dependencies
 
 ### Bioinformatics Tools
-- NCBI datasets
-- [kallisto]([https://pachterlab.github.io/kallisto/](https://pachterlab.github.io/kallisto/download))
+- [NCBI datasets](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/command-line-tools/download-and-install/)
+- [kallisto]((https://pachterlab.github.io/kallisto/download))
 - [bowtie2](https://github.com/BenLangmead/bowtie2)
 - [spades](https://github.com/ablab/spades)
 - [BLAST+](https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html#downloadblastdata)
