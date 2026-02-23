@@ -1,7 +1,7 @@
 # COMP483_Pipeline_Project_2026
 
 ## Description
-This project uses Snakemake to automate a pipeline to analyze samples from two Human cytomegalovirus patients 2 and 6 days post-infection, sequenced by Cheng et al. 2017. 
+This project uses Snakemake to automate a pipeline implementing tools introduced in COMP483 Computational Biology to analyze sequencing reads. The samples analyzed in this project are from two Human cytomegalovirus patients, 2 and 6 days post-infection, sequenced by Cheng et al. 2017. First, the pipeline extracts the coding sequence features and quantifies the TPM of the samples using kallisto. The quantified samples are fed into an R script using the sleuth package to find the differentially expressed genes between the 2 and 6 dpi samples. Next, only reads that map to the HCMV genome are identified using bowtie2, which are then used to create an assembly for each sample using SPAdes. Finally, the sample assemblies are aligned using blast+ to find the top 5 strains.
 
 ## Dependencies
 
@@ -37,7 +37,6 @@ fasterq-dump ./SRR5660045
 Sample data are provided in this repo in the sample_data folder. These data were generated from the above paired-end fastq files by writing the first 10,000 reads to a new fastq file:
 
 ```
-wget -i hcmv_samples.txt
 head -n 40000 data/SRR5660030_1.fastq > sample_data/SRR5660030_1.fastq
 ```
 
