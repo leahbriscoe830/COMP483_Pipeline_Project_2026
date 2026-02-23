@@ -3,7 +3,7 @@
 from Bio.Seq import Seq
 from Bio import SeqIO
 
-# Get input ("kallisto/hcmv_cds.fasta") and output ("hcmv_dataset/ncbi_dataset/data/GCF_000845245.1/cds_from_genomic.fna") from snakemake
+# Get input ("hcmv_dataset/ncbi_dataset/data/GCF_000845245.1/cds_from_genomic.fna") and output ("kallisto/hcmv_cds.fasta") from snakemake
 input = snakemake.input[0]
 output = snakemake.output[0]
 

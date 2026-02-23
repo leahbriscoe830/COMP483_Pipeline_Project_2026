@@ -3,7 +3,7 @@
 from Bio.Seq import Seq
 from Bio import SeqIO
 
-# Get input/output from snakemake
+# Get input ("spades_assemblies/{sample}_assembly/contigs.fasta") and output ("blast_plus/contigs/{sample}_longest_contig.fasta") from snakemake
 input = snakemake.input[0]
 output = snakemake.output[0]
 
