@@ -25,7 +25,7 @@ This project uses Snakemake to automate a pipeline to analyze samples from two H
 - dplyr
 
 ## Data
-The sample data were retrieved from NCBI under SRR5660030, SRR5660033, SRR5660044, and SRR5660045. The SRA location address links were saved to a txt file hcmv_samples.txt. The samples were downloaded to the local system using the following commands:
+The sample data were retrieved from NCBI under the accession numbers SRR5660030, SRR5660033, SRR5660044, and SRR5660045. The SRA location address links were saved to a txt file hcmv_samples.txt. The samples were downloaded to the local system using the following commands:
 
 ```
 wget -i hcmv_samples.txt
@@ -33,6 +33,12 @@ fasterq-dump ./SRR5660030
 fasterq-dump ./SRR5660033
 fasterq-dump ./SRR5660044
 fasterq-dump ./SRR5660045
+```
+Sample data are provided in this repo in the sample_data folder. These data were generated from the above paired-end fastq files by writing the first 10,000 reads to a new fastq file:
+
+```
+wget -i hcmv_samples.txt
+head -n 40000 data/SRR5660030_1.fastq > sample_data/SRR5660030_1.fastq
 ```
 
 ## Running the Pipeline
