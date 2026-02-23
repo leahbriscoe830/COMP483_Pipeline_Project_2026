@@ -3,6 +3,7 @@
 from Bio.Seq import Seq
 from Bio import SeqIO
 
+# Get input ("kallisto/hcmv_cds.fasta") and output ("hcmv_dataset/ncbi_dataset/data/GCF_000845245.1/cds_from_genomic.fna") from snakemake
 input = snakemake.input[0]
 output = snakemake.output[0]
 
@@ -17,13 +18,11 @@ with open(input, 'r') as infile, open(output, 'w') as outfile:
             # Extract protein_id
             parts = line.split("[protein_id=")
 
-            #if len(parts) > 1:
             # Split the string at the ] to get the protein id
             protein_id = parts[1].split("]")[0]
 
-            # Write the new header to the fasta file
+            # Write the new header to the modified fasta file
             outfile.write(">"+str(protein_id)+"\n")
-            #outfile.write(f">{protein_id}\n")
 
         # Write the sequence to the modified fasta as normal
         else:
