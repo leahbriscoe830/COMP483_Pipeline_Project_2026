@@ -17,7 +17,7 @@ output = snakemake.output[0]
 
 with open(output, 'w') as outfile:
 
-    # **Write the count of the CDS to the pipeline report file **
+    ### Write the count of the CDS to the pipeline report file ###
 
     # Parse CDS fasta
     cds_records = list(SeqIO.parse(cds, 'fasta'))
@@ -26,7 +26,7 @@ with open(output, 'w') as outfile:
     outfile.write("The HCMV genome (GCF_000845245.1) has "+ str(len(cds_records)) +" CDS.\n\n")
 
 
-    # **Write the details for each significant transcript from Sleuth (FDR < 0.05)**
+    ### Write the details for each significant transcript from Sleuth (FDR < 0.05) ###
 
     # Open the txt output file and read in the table
     with open(fdr05, 'r') as sleuth_results:
@@ -36,7 +36,7 @@ with open(output, 'w') as outfile:
     outfile.write(sig_transcripts)
 
 
-    # **Write the number of reads in each sample before and after the Bowtie2 mapping**
+    ### Write the number of reads in each sample before and after the Bowtie2 mapping ###
 
     # Use zip() to iterate through each sample reads
     for name, before, after in zip(sample_path, before_bowtie, after_bowtie):
@@ -58,7 +58,7 @@ with open(output, 'w') as outfile:
     outfile.write("\n")
 
 
-    # **Write the two header rows, followed by the top 5 hits, tab-delimit each item**
+    ### Write the two header rows, followed by the top 5 hits, tab-delimit each item ###
 
     # Use zip() to iterate through each sample blast
     for name, blast in zip(sample_path, blast_result):
