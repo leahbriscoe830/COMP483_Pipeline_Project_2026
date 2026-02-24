@@ -15,11 +15,12 @@ so = sleuth_lrt(so, 'reduced', 'full')
 # Extract the test results from the sleuth object 
 sleuth_table = sleuth_results(so, 'reduced:full', 'lrt', show_all = FALSE) 
 
-# Filter most significant results (FDR/qval < 0.05) and sort by pval
+# Filter most significant results (FDR/qval < 0.05) and sort by qval
 sleuth_significant = dplyr::filter(sleuth_table, qval < 0.05) |> dplyr::arrange(qval) 
 
 # Subset only the target id, test statistic, and the p & q values
 sleuth_stats = subset(sleuth_significant, select = c(target_id, test_stat, pval, qval))
 
 # Write FDR < 0.05 transcripts to temp txt file
+
 write.table(sleuth_stats, file=snakemake@output[[1]], append=TRUE, quote = FALSE, row.names = FALSE, sep = "\t")
