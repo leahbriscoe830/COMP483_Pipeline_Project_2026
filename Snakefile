@@ -18,8 +18,8 @@ rule pipeline_report:
     input:
         cds="kallisto/hcmv_cds.fasta",
         fdr05="sleuth/fdr05_results.txt",
-        sample_name=expand("data/{sample}", sample=samples.keys()), 
-        before_bowtie=expand("data/{sample}_1.fastq", sample=samples.keys()),
+        sample_name=expand("sample_data/{sample}", sample=samples.keys()), 
+        before_bowtie=expand("sample_data/{sample}_1.fastq", sample=samples.keys()),
         after_bowtie=expand("bowtie2/results/{sample}_mapped_1.fq.gz", sample=samples.keys()),
         blast_result=expand("blast_plus/results/{sample}.csv", sample=samples.keys())
     output:
@@ -84,8 +84,8 @@ rule spades_assembly:
 # Map the samples to the bowtie2 index; keep only the reads that map and save to fq.gz files
 rule bowtie_map:
     input:
-        forward_reads="data/{sample}_1.fastq",
-        reverse_reads="data/{sample}_2.fastq",
+        forward_reads="sample_data/{sample}_1.fastq",
+        reverse_reads="sample_data/{sample}_2.fastq",
         in1="bowtie2/index/hcmv_bowtie_index.1.bt2",
         in2="bowtie2/index/hcmv_bowtie_index.2.bt2",
         in3="bowtie2/index/hcmv_bowtie_index.3.bt2",
@@ -144,8 +144,8 @@ rule sleuth_tab:
 # Using the paired-end sequencing reads and the index, quantify the TPM for each sample and save the results to the kallisto directory; boostrap 30 threads 2
 rule kallisto_quant:
     input:
-        forward_reads="data/{sample}_1.fastq",
-        reverse_reads="data/{sample}_2.fastq",
+        forward_reads="sample_data/{sample}_1.fastq",
+        reverse_reads="sample_data/{sample}_2.fastq",
         index="kallisto/hcmv_kallisto_index.idx"
     output:
         directory("kallisto/results/{sample}")
