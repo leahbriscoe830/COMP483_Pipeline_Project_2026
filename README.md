@@ -33,7 +33,7 @@ fasterq-dump ./SRR5660044
 fasterq-dump ./SRR5660045
 ```
 
-Sample data are provided in this repo in the sample_data folder. These data were generated from the above sample and paired-end fastq files by writing the first 10,000 reads to a new fastq file:
+Sample data are provided in this repo in the sample_data folder. These data were generated from the above sample and paired-end fastq files by writing the first 10,000 reads to a new fastq file. Example:
 
 ```
 head -n 40000 SRR5660030_1.fastq > sample_data/SRR5660030_1.fastq
