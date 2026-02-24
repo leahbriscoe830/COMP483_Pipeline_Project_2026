@@ -16,7 +16,7 @@ so = sleuth_lrt(so, 'reduced', 'full')
 sleuth_table = sleuth_results(so, 'reduced:full', 'lrt', show_all = FALSE) 
 
 # Filter most significant results (FDR/qval < 0.05) and sort by pval
-sleuth_significant = dplyr::filter(sleuth_table, qval <= 0.05) |> dplyr::arrange(pval) 
+sleuth_significant = dplyr::filter(sleuth_table, qval < 0.05) |> dplyr::arrange(qval) 
 
 # Subset only the target id, test statistic, and the p & q values
 sleuth_stats = subset(sleuth_significant, select = c(target_id, test_stat, pval, qval))
